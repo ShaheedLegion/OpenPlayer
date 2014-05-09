@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1399640263 source:d:\codeblocks\projects\openplayer\main.cpp
+1399649800 source:d:\codeblocks\projects\openplayer\main.cpp
 	<cstdlib>
 	<stdlib.h>
 	<SDL/SDL.h>
@@ -7,6 +7,7 @@
 	"inc/Events.h"
 	"inc/Display.h"
 	"inc/Commands.h"
+	"inc/SoundHandler.h"
 
 1073234947 d:\codeblocks\sdl-1.2.9\include\sdl.h
 	"SDL_main.h"
@@ -184,8 +185,16 @@
 1399639312 d:\codeblocks\projects\openplayer\inc\toggledisplaybutton.h
 	"DisplayButton.h"
 
-1399642334 d:\codeblocks\projects\openplayer\inc\commands.h
+1399643287 d:\codeblocks\projects\openplayer\inc\commands.h
+	"CommandHandler.h"
 	<map>
 
 1399640946 d:\codeblocks\projects\openplayer\inc\commandids.h
+
+1399649817 d:\codeblocks\projects\openplayer\inc\commandhandler.h
+
+1399650092 d:\codeblocks\projects\openplayer\inc\soundhandler.h
+	"CommandHandler.h"
+	"CommandIDs.h"
+	"Commands.h"
 

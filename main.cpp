@@ -12,17 +12,20 @@
 #include "inc/Events.h"
 #include "inc/Display.h"
 #include "inc/Commands.h"
+#include "inc/SoundHandler.h"
 
 namespace openplayer
 {
     Commands * g_commands;
     Events * g_events;
     Display * g_display;
+    SoundHandler * g_sounds;
 
     void CreateSubsystems()
     {
         //Declare all classes etc. here.
         g_commands = new Commands();
+        g_sounds = new SoundHandler(g_commands);
         g_events = new Events();
         g_display = new Display();
 
