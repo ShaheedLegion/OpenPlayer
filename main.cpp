@@ -6,7 +6,7 @@
 #ifdef __APPLE__
 #include <SDL/SDL.h>
 #else
-#include <SDL.h>
+#include <SDL/SDL.h>
 #endif
 
 #include "inc/Events.h"
@@ -43,12 +43,16 @@ namespace openplayer
 
 int main ( int argc, char** argv )
 {
-    if ( SDL_Init( SDL_INIT_VIDEO ) < 0 )    // initialize SDL video
+    if ( SDL_Init(SDL_INIT_VIDEO) < 0 )    // initialize SDL video
     {
-        printf( "Unable to init SDL: %s\n", SDL_GetError() );
+        printf( "Unable to init SDL Video: %s\n", SDL_GetError() );
         return 1;
     }
-
+    if( SDL_Init(SDL_INIT_AUDIO) < 0 )    // initialize SDL audio
+    {
+        printf( "Unable to init SDL Audio: %s\n", SDL_GetError() );
+        return 1;
+    }
     atexit(SDL_Quit);    // make sure SDL cleans up before exit
     SDL_WM_SetCaption("OpenPlayer", "OpenPlayer");
     openplayer::CreateSubsystems();

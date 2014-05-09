@@ -1,9 +1,9 @@
 # depslib dependency file v1.0
-1399649800 source:d:\codeblocks\projects\openplayer\main.cpp
+1399652802 source:d:\codeblocks\projects\openplayer\main.cpp
 	<cstdlib>
 	<stdlib.h>
 	<SDL/SDL.h>
-	<SDL.h>
+	<SDL/SDL.h>
 	"inc/Events.h"
 	"inc/Display.h"
 	"inc/Commands.h"
@@ -166,17 +166,17 @@
 
 1399640297 d:\codeblocks\projects\openplayer\inc\eventlistener.h
 
-1399641105 d:\codeblocks\projects\openplayer\inc\display.h
+1399652809 d:\codeblocks\projects\openplayer\inc\display.h
 	<SDL/SDL.h>
-	<SDL.h>
+	<SDL/SDL.h>
 	"EventListener.h"
 	"DisplayButton.h"
 	"ToggleDisplayButton.h"
 	"CommandIDs.h"
 
-1399639316 d:\codeblocks\projects\openplayer\inc\displaybutton.h
+1399652817 d:\codeblocks\projects\openplayer\inc\displaybutton.h
 	<SDL/SDL.h>
-	<SDL.h>
+	<SDL/SDL.h>
 
 1399636046 d:\codeblocks\projects\openplayer\inc\multistatebutton.h
 	"ToggleDisplayButton.h"
@@ -193,8 +193,230 @@
 
 1399649817 d:\codeblocks\projects\openplayer\inc\commandhandler.h
 
-1399650092 d:\codeblocks\projects\openplayer\inc\soundhandler.h
+1399653010 d:\codeblocks\projects\openplayer\inc\soundhandler.h
 	"CommandHandler.h"
 	"CommandIDs.h"
 	"Commands.h"
+	<SDL/SDL.h>
+	<SDL/SDL_mixer.h>
+
+1398652344 d:\codeblocks\projects\openplayer\fmod\fmod.h
+	"fmod_codec.h"
+	"fmod_dsp.h"
+	"fmod_memoryinfo.h"
+
+1398652344 d:\codeblocks\projects\openplayer\fmod\fmod_codec.h
+
+1398652344 d:\codeblocks\projects\openplayer\fmod\fmod_dsp.h
+
+1398652344 d:\codeblocks\projects\openplayer\fmod\fmod_memoryinfo.h
+
+1399652332 d:\codeblocks\sdl-1.2.9\include\sdl_mixer.h
+	"SDL_types.h"
+	"SDL_rwops.h"
+	"SDL_audio.h"
+	"SDL_endian.h"
+	"SDL_version.h"
+	"begin_code.h"
+	"close_code.h"
+
+1112186283 d:\codeblocks\sdl-1.2.9\include\sdl_endian.h
+	<stdio.h>
+	"SDL_types.h"
+	"SDL_rwops.h"
+	"SDL_byteorder.h"
+	"begin_code.h"
+	"close_code.h"
+
+1399652555 d:\codeblocks\sdl-1.2.9\include\sdl\sdl.h
+	"SDL_main.h"
+	"SDL_stdinc.h"
+	"SDL_audio.h"
+	"SDL_cdrom.h"
+	"SDL_cpuinfo.h"
+	"SDL_endian.h"
+	"SDL_error.h"
+	"SDL_events.h"
+	"SDL_loadso.h"
+	"SDL_mutex.h"
+	"SDL_rwops.h"
+	"SDL_thread.h"
+	"SDL_timer.h"
+	"SDL_video.h"
+	"SDL_version.h"
+	"begin_code.h"
+	"close_code.h"
+
+1399652554 d:\codeblocks\sdl-1.2.9\include\sdl\sdl_main.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+	"begin_code.h"
+	"close_code.h"
+
+1399652554 d:\codeblocks\sdl-1.2.9\include\sdl\sdl_stdinc.h
+	"SDL_config.h"
+	<sys/types.h>
+	<stdio.h>
+	<stdlib.h>
+	<stddef.h>
+	<stdarg.h>
+	<stdlib.h>
+	<malloc.h>
+	<stddef.h>
+	<stdarg.h>
+	<memory.h>
+	<string.h>
+	<strings.h>
+	<inttypes.h>
+	<stdint.h>
+	<ctype.h>
+	<iconv.h>
+	"begin_code.h"
+	<alloca.h>
+	<malloc.h>
+	<malloc.h>
+	<malloc.h>
+	<stdlib.h>
+	"close_code.h"
+
+1399652555 d:\codeblocks\sdl-1.2.9\include\sdl\sdl_config.h
+	"SDL_platform.h"
+	<stdarg.h>
+
+1399652555 d:\codeblocks\sdl-1.2.9\include\sdl\sdl_platform.h
+
+1399652554 d:\codeblocks\sdl-1.2.9\include\sdl\begin_code.h
+
+1399652554 d:\codeblocks\sdl-1.2.9\include\sdl\close_code.h
+
+1399652554 d:\codeblocks\sdl-1.2.9\include\sdl\sdl_audio.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_endian.h"
+	"SDL_mutex.h"
+	"SDL_thread.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1399652555 d:\codeblocks\sdl-1.2.9\include\sdl\sdl_error.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1399652555 d:\codeblocks\sdl-1.2.9\include\sdl\sdl_endian.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1399652554 d:\codeblocks\sdl-1.2.9\include\sdl\sdl_mutex.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1399652554 d:\codeblocks\sdl-1.2.9\include\sdl\sdl_thread.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_mutex.h"
+	"begin_code.h"
+	<process.h>
+	"close_code.h"
+
+1399652554 d:\codeblocks\sdl-1.2.9\include\sdl\sdl_rwops.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1399652554 d:\codeblocks\sdl-1.2.9\include\sdl\sdl_cdrom.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1399652555 d:\codeblocks\sdl-1.2.9\include\sdl\sdl_cpuinfo.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1399652555 d:\codeblocks\sdl-1.2.9\include\sdl\sdl_events.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_active.h"
+	"SDL_keyboard.h"
+	"SDL_mouse.h"
+	"SDL_joystick.h"
+	"SDL_quit.h"
+	"begin_code.h"
+	"close_code.h"
+
+1399652555 d:\codeblocks\sdl-1.2.9\include\sdl\sdl_active.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1399652554 d:\codeblocks\sdl-1.2.9\include\sdl\sdl_keyboard.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_keysym.h"
+	"begin_code.h"
+	"close_code.h"
+
+1399652555 d:\codeblocks\sdl-1.2.9\include\sdl\sdl_keysym.h
+
+1399652554 d:\codeblocks\sdl-1.2.9\include\sdl\sdl_mouse.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1399652554 d:\codeblocks\sdl-1.2.9\include\sdl\sdl_video.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1399652554 d:\codeblocks\sdl-1.2.9\include\sdl\sdl_joystick.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1399652554 d:\codeblocks\sdl-1.2.9\include\sdl\sdl_quit.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+
+1399652555 d:\codeblocks\sdl-1.2.9\include\sdl\sdl_loadso.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1399652555 d:\codeblocks\sdl-1.2.9\include\sdl\sdl_timer.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1399652554 d:\codeblocks\sdl-1.2.9\include\sdl\sdl_version.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1399652612 d:\codeblocks\sdl-1.2.9\include\sdl\sdl_mixer.h
+	"SDL_types.h"
+	"SDL_rwops.h"
+	"SDL_audio.h"
+	"SDL_endian.h"
+	"SDL_version.h"
+	"begin_code.h"
+	"close_code.h"
+
+1399652554 d:\codeblocks\sdl-1.2.9\include\sdl\sdl_types.h
+	"SDL_stdinc.h"
 

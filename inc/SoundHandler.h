@@ -5,10 +5,15 @@
 #include "CommandIDs.h"
 #include "Commands.h"
 
+#include <SDL/SDL.h>
+#include <SDL/SDL_mixer.h>
+
 using namespace openplayer;
 
 class SoundHandler : public CommandHandler
 {
+protected:
+    Mix_Music * m_file;
 public:
     SoundHandler(Commands * c)
     {
@@ -23,6 +28,10 @@ public:
         c->SetCommandHandler(CMD_REPA, this);
         c->SetCommandHandler(CMD_SHUFF0, this);
         c->SetCommandHandler(CMD_SHUFFA, this);
+
+        Mix_OpenAudio(22050,AUDIO_S16SYS,2,640);
+        m_file = Mix_LoadMUS("test.mp3");
+        Mix_PlayMusic(m_file,0);
     }
     ~SoundHandler(){}
 
