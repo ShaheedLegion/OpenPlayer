@@ -1,0 +1,183 @@
+# depslib dependency file v1.0
+1399635730 source:d:\codeblocks\projects\openplayer\main.cpp
+	<cstdlib>
+	<stdlib.h>
+	<SDL/SDL.h>
+	<SDL.h>
+	"inc/Events.h"
+	"inc/Display.h"
+
+1073234947 d:\codeblocks\sdl-1.2.9\include\sdl.h
+	"SDL_main.h"
+	"SDL_types.h"
+	"SDL_getenv.h"
+	"SDL_error.h"
+	"SDL_rwops.h"
+	"SDL_timer.h"
+	"SDL_audio.h"
+	"SDL_cdrom.h"
+	"SDL_joystick.h"
+	"SDL_events.h"
+	"SDL_video.h"
+	"SDL_byteorder.h"
+	"SDL_version.h"
+	"begin_code.h"
+	"close_code.h"
+
+1073234947 d:\codeblocks\sdl-1.2.9\include\sdl_main.h
+	"SDL_types.h"
+	"begin_code.h"
+	"close_code.h"
+	"begin_code.h"
+	"close_code.h"
+
+1090385606 d:\codeblocks\sdl-1.2.9\include\sdl_types.h
+
+1105225981 d:\codeblocks\sdl-1.2.9\include\begin_code.h
+
+1073234948 d:\codeblocks\sdl-1.2.9\include\close_code.h
+
+1018535713 d:\codeblocks\sdl-1.2.9\include\sdl_getenv.h
+	"begin_code.h"
+	"close_code.h"
+
+1100561407 d:\codeblocks\sdl-1.2.9\include\sdl_error.h
+	"begin_code.h"
+	"close_code.h"
+
+1093028221 d:\codeblocks\sdl-1.2.9\include\sdl_rwops.h
+	<stdio.h>
+	"SDL_types.h"
+	"begin_code.h"
+	"close_code.h"
+
+1105658696 d:\codeblocks\sdl-1.2.9\include\sdl_timer.h
+	"SDL_main.h"
+	"SDL_types.h"
+	"begin_code.h"
+	"close_code.h"
+
+1093028221 d:\codeblocks\sdl-1.2.9\include\sdl_audio.h
+	<stdio.h>
+	"SDL_main.h"
+	"SDL_types.h"
+	"SDL_error.h"
+	"SDL_rwops.h"
+	"SDL_byteorder.h"
+	"begin_code.h"
+	"close_code.h"
+
+1100297357 d:\codeblocks\sdl-1.2.9\include\sdl_byteorder.h
+
+1113732990 d:\codeblocks\sdl-1.2.9\include\sdl_cdrom.h
+	"SDL_types.h"
+	"begin_code.h"
+	"close_code.h"
+
+1090177506 d:\codeblocks\sdl-1.2.9\include\sdl_joystick.h
+	"SDL_types.h"
+	"begin_code.h"
+	"close_code.h"
+
+1093028221 d:\codeblocks\sdl-1.2.9\include\sdl_events.h
+	"SDL_types.h"
+	"SDL_active.h"
+	"SDL_keyboard.h"
+	"SDL_mouse.h"
+	"SDL_joystick.h"
+	"SDL_quit.h"
+	"begin_code.h"
+	"close_code.h"
+
+1073234947 d:\codeblocks\sdl-1.2.9\include\sdl_active.h
+	"begin_code.h"
+	"close_code.h"
+
+1090191460 d:\codeblocks\sdl-1.2.9\include\sdl_keyboard.h
+	"SDL_types.h"
+	"SDL_keysym.h"
+	"begin_code.h"
+	"close_code.h"
+
+1073234947 d:\codeblocks\sdl-1.2.9\include\sdl_keysym.h
+
+1113732990 d:\codeblocks\sdl-1.2.9\include\sdl_mouse.h
+	"SDL_types.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1104642676 d:\codeblocks\sdl-1.2.9\include\sdl_video.h
+	<stdio.h>
+	"SDL_types.h"
+	"SDL_mutex.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1073234947 d:\codeblocks\sdl-1.2.9\include\sdl_mutex.h
+	"SDL_main.h"
+	"SDL_types.h"
+	"begin_code.h"
+	"close_code.h"
+
+1073234947 d:\codeblocks\sdl-1.2.9\include\sdl_quit.h
+
+1113732990 d:\codeblocks\sdl-1.2.9\include\sdl_version.h
+	"SDL_types.h"
+	"begin_code.h"
+	"close_code.h"
+
+1399636077 source:d:\codeblocks\projects\openplayer\events.cpp
+	"inc/Events.h"
+
+1399571721 d:\codeblocks\projects\openplayer\events.h
+	"inc/EventListener.h"
+
+1399571701 d:\codeblocks\projects\openplayer\eventlistener.h
+
+1399573462 d:\codeblocks\projects\openplayer\list.h
+	<SDL/SDL.h>
+	<SDL.h>
+
+1399572094 d:\codeblocks\projects\openplayer\display.h
+	<SDL/SDL.h>
+	<SDL.h>
+	"inc/EventListener.h"
+	"inc/DisplayButton.h"
+	"inc/MultiStateButton.h"
+
+1399569514 d:\codeblocks\projects\openplayer\displaybutton.h
+	<SDL/SDL.h>
+	<SDL.h>
+
+1399573534 d:\codeblocks\projects\openplayer\multistatebutton.h
+	"inc/ToggleDisplayButton.h"
+
+1399572423 d:\codeblocks\projects\openplayer\toggledisplaybutton.h
+	"inc/DisplayButton.h"
+
+1399635972 d:\codeblocks\projects\openplayer\inc\events.h
+	"EventListener.h"
+	<vector>
+
+1399633246 d:\codeblocks\projects\openplayer\inc\eventlistener.h
+
+1399636379 d:\codeblocks\projects\openplayer\inc\display.h
+	<SDL/SDL.h>
+	<SDL.h>
+	"EventListener.h"
+	"DisplayButton.h"
+	"ToggleDisplayButton.h"
+
+1399569516 d:\codeblocks\projects\openplayer\inc\displaybutton.h
+	<SDL/SDL.h>
+	<SDL.h>
+
+1399636046 d:\codeblocks\projects\openplayer\inc\multistatebutton.h
+	"ToggleDisplayButton.h"
+	<vector>
+
+1399635245 d:\codeblocks\projects\openplayer\inc\toggledisplaybutton.h
+	"DisplayButton.h"
+
