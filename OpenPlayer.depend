@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1399652802 source:d:\codeblocks\projects\openplayer\main.cpp
+1399653900 source:d:\codeblocks\projects\openplayer\main.cpp
 	<cstdlib>
 	<stdlib.h>
 	<SDL/SDL.h>
@@ -193,12 +193,17 @@
 
 1399649817 d:\codeblocks\projects\openplayer\inc\commandhandler.h
 
-1399653010 d:\codeblocks\projects\openplayer\inc\soundhandler.h
+1399657241 d:\codeblocks\projects\openplayer\inc\soundhandler.h
 	"CommandHandler.h"
 	"CommandIDs.h"
 	"Commands.h"
+	"DSP.h"
 	<SDL/SDL.h>
 	<SDL/SDL_mixer.h>
+	<string>
+	<Windows.h>
+	<Commdlg.h>
+	<iostream>
 
 1398652344 d:\codeblocks\projects\openplayer\fmod\fmod.h
 	"fmod_codec.h"
@@ -419,4 +424,7 @@
 
 1399652554 d:\codeblocks\sdl-1.2.9\include\sdl\sdl_types.h
 	"SDL_stdinc.h"
+
+1399658887 d:\codeblocks\projects\openplayer\inc\dsp.h
+	<iostream>
 

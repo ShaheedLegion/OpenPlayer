@@ -43,12 +43,14 @@
 			<Add library="gdi32" />
 			<Add library="winmm" />
 			<Add library="dxguid" />
+			<Add library="C:\Program Files (x86)\CodeBlocks\MinGW\lib\libcomdlg32.a" />
 			<Add directory="D:\CodeBlocks\SDL-1.2.9\lib" />
 		</Linker>
 		<Unit filename="Events.cpp" />
 		<Unit filename="inc\CommandHandler.h" />
 		<Unit filename="inc\CommandIDs.h" />
 		<Unit filename="inc\Commands.h" />
+		<Unit filename="inc\DSP.h" />
 		<Unit filename="inc\Display.h" />
 		<Unit filename="inc\DisplayButton.h" />
 		<Unit filename="inc\EventListener.h" />

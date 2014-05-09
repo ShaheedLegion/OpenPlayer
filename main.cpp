@@ -112,9 +112,11 @@ int main ( int argc, char** argv )
             } // end switch
         } // end of message processing
        openplayer::g_display->Render();
+       SDL_Delay(50);   //put the delay here to free up some cpu
     } // end main loop
 
     openplayer::DestroySubsystems();
+    SDL_Quit();
     printf("Exited cleanly\n");    // all is well ;)
 
     return 0;
