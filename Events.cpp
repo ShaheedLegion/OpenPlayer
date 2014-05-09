@@ -3,7 +3,7 @@
 using namespace std;
 typedef vector<EventListener*>::iterator ev_iter;
 
-Events::Events()
+Events::Events() : m_commands(0)
 {
 }
 Events::~Events()
@@ -24,10 +24,16 @@ void Events::RemoveEventListener(EventListener * listener)
 		}
 	}
 }
+void Events::SetCommandHandler(Commands * c)
+{
+    m_commands = c;
+}
 void Events::PublishEventData(EventData & data)
 {
 	for (ev_iter i = m_listeners.begin(); i != m_listeners.end(); i++)
     {
-		(*i)->HandleEvent(data);
+		int command = (*i)->HandleEvent(data);
+		if (m_commands)
+            m_commands->HandleCommand(command);
 	}
 }

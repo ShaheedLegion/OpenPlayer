@@ -14,9 +14,9 @@ class ToggleDisplayButton : public DisplayButton
 
         }
 
-        void Initialize(const char * filename, int x, int y, int w, int h)
+        void Initialize(const char * filename, int x, int y, int w, int h, int c)
         {
-            DisplayButton::Initialize(filename, x, y, w, h);
+            DisplayButton::Initialize(filename, x, y, w, h, c);
             clips[ CLIP_MOUSEOVER ].x = 0;
             clips[ CLIP_MOUSEOVER ].y = 0;
             clips[ CLIP_MOUSEOVER ].w = w;
@@ -30,7 +30,7 @@ class ToggleDisplayButton : public DisplayButton
             //Set the default sprite
             CopyClip(CLIP_MOUSEOVER);
         }
-        ToggleDisplayButton(const char * filename, int x, int y, int w, int h ) : DisplayButton(filename, x, y, w, h), bToggled(false)
+        ToggleDisplayButton(const char * filename, int x, int y, int w, int h, int c) : DisplayButton(filename, x, y, w, h, c), bToggled(false)
         {
             clips[ CLIP_MOUSEOVER ].x = 0;
             clips[ CLIP_MOUSEOVER ].y = 0;
@@ -62,7 +62,7 @@ class ToggleDisplayButton : public DisplayButton
             {//Set the button sprite
                 bToggled = !bToggled;
                 CopyClip(bToggled ? CLIP_MOUSEOUT : CLIP_MOUSEOVER);
-                return bToggled;
+                return (bToggled ? command : -1);
             }
 
             return -1;

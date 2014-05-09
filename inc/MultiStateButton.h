@@ -19,9 +19,9 @@ class MultiStateButton : public DisplayButton
 
         }
 
-        void AddState(const char * filename, int x, int y, int w, int h)
+        void AddState(const char * filename, int x, int y, int w, int h, int c)
         {
-            ToggleDisplayButton * button = new ToggleDisplayButton(filename, x, y, w, h);
+            ToggleDisplayButton * button = new ToggleDisplayButton(filename, x, y, w, h, c);
             m_states.push_back(button);
         }
 

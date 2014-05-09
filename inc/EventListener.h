@@ -18,7 +18,7 @@ typedef struct tagEventData
 class EventListener
 {
     public:
-    virtual void HandleEvent(EventData & data) = 0;
+    virtual int HandleEvent(EventData & data) = 0;
 };
 
 #endif // EVENTLISTENER_H_INCLUDED

@@ -18,19 +18,21 @@ class DisplayButton
         SDL_Rect clips[ 4 ];
         SDL_Rect box;
         SDL_Rect clip;
+        int command;
 
     public:
         DisplayButton()
         {
 
         }
-        DisplayButton(const char * filename, int x, int y, int w, int h )
+        DisplayButton(const char * filename, int x, int y, int w, int h, int c )
         {
-            Initialize(filename, x, y, w, h);
+            Initialize(filename, x, y, w, h, c);
         }
 
-        virtual void Initialize(const char * filename, int x, int y, int w, int h )
+        virtual void Initialize(const char * filename, int x, int y, int w, int h, int c )
         {
+            command = c;
             CLIP_MOUSEOVER = 0;
             CLIP_MOUSEOUT = 1;
             CLIP_MOUSEDOWN = 2;
@@ -79,10 +81,10 @@ class DisplayButton
             if ( ( x > box.x ) && ( x < box.x + box.w ) && ( y > box.y ) && ( y < box.y + box.h ) )
             {//Set the button sprite
                 CopyClip(CLIP_MOUSEOVER);
-                return 1;
+                return -1;
             }
             CopyClip(CLIP_MOUSEOUT);
-            return 0;
+            return -1;
         }
 
         virtual int HandleMouseDown(int x, int y)
@@ -90,10 +92,10 @@ class DisplayButton
             if ( ( x > box.x ) && ( x < box.x + box.w ) && ( y > box.y ) && ( y < box.y + box.h ) )
             {//Set the button sprite
                 CopyClip(CLIP_MOUSEDOWN);
-                return 1;
+                return command;
             }
 
-            return 0;
+            return -1;
         }
 
         virtual int HandleMouseUp(int x, int y)
@@ -101,9 +103,9 @@ class DisplayButton
             if ( ( x > this->box.x ) && ( x < box.x + box.w ) && ( y > box.y ) && ( y < box.y + box.h ) )
             {//Set the button sprite
                 CopyClip(CLIP_MOUSEUP);
-                return 1;
+                return -1;
             }
-            return 0;
+            return -1;
         }
 
         virtual void Render(SDL_Surface * screen)

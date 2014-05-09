@@ -1,11 +1,12 @@
 # depslib dependency file v1.0
-1399635730 source:d:\codeblocks\projects\openplayer\main.cpp
+1399640263 source:d:\codeblocks\projects\openplayer\main.cpp
 	<cstdlib>
 	<stdlib.h>
 	<SDL/SDL.h>
 	<SDL.h>
 	"inc/Events.h"
 	"inc/Display.h"
+	"inc/Commands.h"
 
 1073234947 d:\codeblocks\sdl-1.2.9\include\sdl.h
 	"SDL_main.h"
@@ -128,7 +129,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1399636077 source:d:\codeblocks\projects\openplayer\events.cpp
+1399640186 source:d:\codeblocks\projects\openplayer\events.cpp
 	"inc/Events.h"
 
 1399571721 d:\codeblocks\projects\openplayer\events.h
@@ -157,20 +158,22 @@
 1399572423 d:\codeblocks\projects\openplayer\toggledisplaybutton.h
 	"inc/DisplayButton.h"
 
-1399635972 d:\codeblocks\projects\openplayer\inc\events.h
+1399640266 d:\codeblocks\projects\openplayer\inc\events.h
 	"EventListener.h"
+	"Commands.h"
 	<vector>
 
-1399633246 d:\codeblocks\projects\openplayer\inc\eventlistener.h
+1399640297 d:\codeblocks\projects\openplayer\inc\eventlistener.h
 
-1399636379 d:\codeblocks\projects\openplayer\inc\display.h
+1399641105 d:\codeblocks\projects\openplayer\inc\display.h
 	<SDL/SDL.h>
 	<SDL.h>
 	"EventListener.h"
 	"DisplayButton.h"
 	"ToggleDisplayButton.h"
+	"CommandIDs.h"
 
-1399569516 d:\codeblocks\projects\openplayer\inc\displaybutton.h
+1399639316 d:\codeblocks\projects\openplayer\inc\displaybutton.h
 	<SDL/SDL.h>
 	<SDL.h>
 
@@ -178,6 +181,10 @@
 	"ToggleDisplayButton.h"
 	<vector>
 
-1399635245 d:\codeblocks\projects\openplayer\inc\toggledisplaybutton.h
+1399639312 d:\codeblocks\projects\openplayer\inc\toggledisplaybutton.h
 	"DisplayButton.h"
+
+1399640657 d:\codeblocks\projects\openplayer\inc\commands.h
+
+1399640946 d:\codeblocks\projects\openplayer\inc\commandids.h
 

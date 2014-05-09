@@ -10,6 +10,9 @@
 #include "EventListener.h"
 #include "DisplayButton.h"
 #include "ToggleDisplayButton.h"
+#include "CommandIDs.h"
+
+using namespace openplayer;
 
 class Display : public EventListener
 {
@@ -53,16 +56,18 @@ class Display : public EventListener
 
             int bw = 64, bh = 64;
             const char * names[] = {"gui/op_previous.bmp","gui/op_play.bmp","gui/op_pause.bmp","gui/op_stop.bmp","gui/op_next.bmp","gui/op_open.bmp"};
+            int commands[] = {CMD_PREV, CMD_PLAY, CMD_PAUSE, CMD_STOP, CMD_NEXT, CMD_OPEN};
             for (int i = 0; i < num_media_buttons; i++)
-                mediaButtons[i].Initialize(names[i], (i * bw), screen->h - bh, bw, bh);
+                mediaButtons[i].Initialize(names[i], (i * bw), screen->h - bh, bw, bh, commands[i]);
 
             const char * states[] = {"gui/op_rep_off.bmp", "gui/op_rep_one.bmp", "gui/op_rep_all.bmp"};
+            int statecommands[] = {CMD_REP0, CMD_REP1, CMD_REPA};
             for (int i = 0; i < num_state_buttons; i++)
                 //repeatButton.AddState(states[i], 0, screen->h - (bh * 2), bw, bh);
-                stateButtons[i].Initialize(states[i], (i * bw), screen->h - (bh * 2), bw, bh);
+                stateButtons[i].Initialize(states[i], (i * bw), screen->h - (bh * 2), bw, bh, statecommands[i]);
         }
 
-        void HandleEvent(EventData & data)
+        int HandleEvent(EventData & data)
         {
             //printf("Handling display event id[%d] code[%d] x[%d] y[%d]\n", data->ID, data->keycode, data->x, data->y);
             if (data.ID == SDL_MOUSEMOTION)
@@ -76,10 +81,17 @@ class Display : public EventListener
             {
                 if (data.keycode == SDL_BUTTON_LEFT)
                 {
+                    int command = -1;
                     for (int i = 0; i < num_media_buttons; i++)
-                        mediaButtons[i].HandleMouseDown(data.x, data.y);
+                    {
+                        command = mediaButtons[i].HandleMouseDown(data.x, data.y);
+                       if (command != -1) return command;
+                    }
                     for (int i = 0; i < num_state_buttons; i++)
-                        stateButtons[i].HandleMouseDown(data.x, data.y);
+                    {
+                        command = stateButtons[i].HandleMouseDown(data.x, data.y);
+                        if (command != -1) return command;
+                    }
                     //repeatButton.HandleMouseDown(data.x, data.y);
                 }
             }
@@ -93,6 +105,7 @@ class Display : public EventListener
                     //    stateButtons[i]->HandleMouseUp(data->x, data->y);
                 }
             }
+            return -1;
         }
 
         void Render()
