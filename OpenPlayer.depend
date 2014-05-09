@@ -184,7 +184,8 @@
 1399639312 d:\codeblocks\projects\openplayer\inc\toggledisplaybutton.h
 	"DisplayButton.h"
 
-1399640657 d:\codeblocks\projects\openplayer\inc\commands.h
+1399642334 d:\codeblocks\projects\openplayer\inc\commands.h
+	<map>
 
 1399640946 d:\codeblocks\projects\openplayer\inc\commandids.h
 
