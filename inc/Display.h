@@ -23,6 +23,7 @@ class Display : public EventListener, public IDataHandler
         SDL_Surface * screen;
         SDL_Surface * visualization;
         SDL_Rect dstrect;
+        short m_data[32];
 
     public:
         DisplayButton * mediaButtons;
@@ -109,6 +110,7 @@ class Display : public EventListener, public IDataHandler
 
             if (visualization)
             {// draw bitmap ... etc
+                RenderVisualization();
                 SDL_BlitSurface(visualization, 0, screen, &dstrect);
                 for (int i = 0; i < num_media_buttons; i++)
                     mediaButtons[i].Render(screen);
@@ -118,70 +120,80 @@ class Display : public EventListener, public IDataHandler
 
             SDL_Flip(screen); // finally, update the screen :)
         }
+        void VLine(int * pixels, int x0, int y0, int y1, int sw, Uint32 color)
+        {
+            int idx = 0;
+            for (int i = 0; i < (y1 - y0); i++)
+            {
+                idx = x0 + ((y0 + i) * sw);
+                pixels[idx] = color;
+            }
+
+        }
+        void HLine(int * pixels, int x0, int x1, int y, int sw, Uint32 color)
+        {
+            int idx = x0 + (y * sw);
+            for (int i = 0; i < (x1 - x0); i++)
+            {
+                pixels[idx + i] = color;
+            }
+        }
         void HandleData(short * buff, int len, int chan)
         {
-            //printf("HandleData - stream channel[%d] length [%d]\n", chan, len);
-            //printf("HandleData called channels[%d] lowest l[%d] r[%d] highest l[%d] r[%d]\n", chan, l_lowest, r_lowest, l_highest, r_highest);
+            int indices = (len / 160);
+            int idxoffset = 0;
+            int internaloffset = 0;
+            for (int i = 0; i < indices; i++)
+            {
+                m_data[internaloffset + 0] = buff[idxoffset + 0];
+                m_data[internaloffset + 1] = buff[idxoffset + 40];
 
+                idxoffset += 80;
+                internaloffset += 2;
+            }
+        }
+        void RenderVisualization()
+        {
             if (visualization)
             {   //possibly clear out viz here
                 SDL_FillRect(visualization, 0, SDL_MapRGB(visualization->format, 255, 64, 64));
-                //perform some crazy math on viz...
                 SDL_LockSurface(visualization);
-                int indices = (len / 160);
-                int * pixels = (int*)visualization->pixels;
 
-                if (pixels)
+                if (visualization->pixels)
                 {
                     Uint32 c_white = SDL_MapRGB(visualization->format, 255, 255, 255);
+                    Uint32 c_black = SDL_MapRGB(visualization->format, 0, 0, 0);
+                    Uint32 c_gray = SDL_MapRGB(visualization->format, 128, 128, 128);
                     short lval, rval;
                     double ldval, rdval;
                     int offset = visualization->h / 2;
-                    int l_idx;
-                    int r_idx;
 
                     int idxoffset = 0;
-                    for (int i = 0; i < indices; i++)
+                    for (int i = 0; i < 16; i++)
                     {
-                        lval = buff[idxoffset];
-                        rval = buff[idxoffset + 1];
-
-                        idxoffset += 80;
+                        lval = m_data[idxoffset];
+                        rval = m_data[idxoffset + 1];
+                        idxoffset += 2;
 
                         if (lval)
                         {
-                            if (lval < 0) ldval = (double)((double)lval / (SHRT_MIN));
-                            if (lval > 0) ldval = (double)((double)lval / (SHRT_MAX));
-                            if (rval < 0) rdval = (double)((double)rval / (SHRT_MIN));
-                            if (rval > 0) rdval = (double)((double)rval / (SHRT_MAX));
-
-                            //printf("Clamped lval[%f]\n", ldval);
-
+                            ldval = (lval < 0? (double)((double)lval / (SHRT_MIN)) : (double)((double)lval / (SHRT_MAX)));
+                            rdval = (rval < 0? (double)((double)rval / (SHRT_MIN)) : (double)((double)rval / (SHRT_MAX)));
                             ldval *= 50;
                             rdval *= 50;
-
-                            if (ldval > 50.0 || rdval > 50.0 || ldval < -50.0 || rdval < -50.0)
-                                printf("Exceeded! Transformed lval [%f] rval[%f]\n", ldval, rdval);
                         }
 
                         int index = i * 24;
                         for (int j = 0; j < 24; j++)
                         {
-                            l_idx = index + ((offset - floor(ldval)) * visualization->w);
-                            r_idx = index + ((offset + floor(rdval)) * visualization->w);
-                            if (l_idx > (visualization->w * visualization->h) || l_idx < 0)
-                            {
-                                printf("left index exceeded bounds! idx[%d] bounds[%d]\n", l_idx, (visualization->w * visualization->h));
+                            if ((ldval < 0) || (ldval > 50.0))
                                 continue;
-                            }
-                            if (r_idx > (visualization->w * visualization->h) || r_idx < 0)
-                            {
-                                printf("right index exceeded bounds! idx[%d] bounds[%d]\n", r_idx, (visualization->w * visualization->h));
+                            if ((rdval < 0) || (rdval > 50.0))
                                 continue;
-                            }
-                            //printf("Setting indices i[%d] l[%d] r[%d]\n", i, l_idx, r_idx);
-                            pixels[l_idx] = c_white;
-                            pixels[r_idx] = c_white;
+
+                            VLine((int*)visualization->pixels, index, offset - floor(ldval), offset, visualization->w, c_white);
+                            VLine((int*)visualization->pixels, index, offset, offset + floor(rdval), visualization->w, c_black);
+                            HLine((int*)visualization->pixels, 0, visualization->w, offset, visualization->w, c_gray);
                             index++;
                         }
                     }
