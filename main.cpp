@@ -31,6 +31,7 @@ namespace openplayer
 
         g_events->SetCommandHandler(g_commands);
         g_events->AddEventListener(g_display);
+        g_sounds->SetHandler(g_display);
     }
 
     void DestroySubsystems()

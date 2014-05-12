@@ -106,6 +106,11 @@ public:
         }
     }
 
+    void SetHandler(IDataHandler * h)
+    {
+        if (m_dsp)
+            m_dsp->handler = h;
+    }
 protected:
     void OpenFile()
     {

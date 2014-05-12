@@ -2,8 +2,14 @@
 #define DSP_H_INCLUDED
 
 #include <iostream>
-using namespace std;
 
+class IDataHandler
+{
+    public:
+    virtual void HandleData(short * buff, int len, int chan) = 0;
+};
+
+using namespace std;
 class DSP;
 
 namespace ns_dsp
@@ -17,7 +23,8 @@ class DSP
     short * m_data;
     short * m_buffer;
     int data_len;
-    DSP() : m_data(0), m_buffer(0), data_len(50)
+    IDataHandler * handler;
+    DSP() : m_data(0), m_buffer(0), data_len(100), handler(0)
     {
         ns_dsp::g_dsp = this;
         m_data = new short[data_len];
@@ -35,6 +42,8 @@ class DSP
             idx += stepsize;
         }
         memcpy(ns_dsp::g_dsp->m_buffer, ns_dsp::g_dsp->m_data, ns_dsp::g_dsp->data_len);
+        if (ns_dsp::g_dsp->handler)
+            ns_dsp::g_dsp->handler->HandleData(ns_dsp::g_dsp->m_buffer, ns_dsp::g_dsp->data_len, chan);
     }
 };
 #endif // DSP_H_INCLUDED
