@@ -166,10 +166,11 @@
 
 1399640297 d:\codeblocks\projects\openplayer\inc\eventlistener.h
 
-1399898869 d:\codeblocks\projects\openplayer\inc\display.h
+1399902379 d:\codeblocks\projects\openplayer\inc\display.h
 	<SDL/SDL.h>
 	<SDL/SDL.h>
 	<limits.h>
+	<math.h>
 	"EventListener.h"
 	"DisplayButton.h"
 	"ToggleDisplayButton.h"
@@ -427,7 +428,7 @@
 1399652554 d:\codeblocks\sdl-1.2.9\include\sdl\sdl_types.h
 	"SDL_stdinc.h"
 
-1399896598 d:\codeblocks\projects\openplayer\inc\dsp.h
+1399899985 d:\codeblocks\projects\openplayer\inc\dsp.h
 	<iostream>
 
 1399891527 d:\codeblocks\sdl-1.2.9\include\sdl\sdl_draw.h
