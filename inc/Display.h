@@ -25,6 +25,28 @@ class Display : public EventListener, public IDataHandler
         SDL_Rect dstrect;
         short m_data[32];
 
+        struct tagColor
+        {
+            public:
+            int r;
+            int g;
+            int b;
+            int rd;
+            int gd;
+            int bd;
+
+            tagColor(int _r, int _g, int _b, int _rd, int _gd, int _bd) : r(_r), g(_g), b(_b), rd(_rd), gd(_gd), bd(_bd)
+            {
+
+            }
+            void increment()
+            {
+                r += rd;
+                g += gd;
+                b += bd;
+            }
+        };
+
     public:
         DisplayButton * mediaButtons;
         int num_media_buttons;
@@ -130,6 +152,17 @@ class Display : public EventListener, public IDataHandler
             }
 
         }
+        void VGLine(int * pixels, int x0, int y0, int y1, int sw, tagColor & col, SDL_Surface * surf)
+        {
+            int idx = 0;
+            for (int i = 0; i < (y1 - y0); i++)
+            {
+                col.increment();
+                idx = x0 + ((y0 + i) * sw);
+                pixels[idx] = SDL_MapRGB(surf->format, col.r, col.g, col.b);
+            }
+
+        }
         void HLine(int * pixels, int x0, int x1, int y, int sw, Uint32 color)
         {
             int idx = x0 + (y * sw);
@@ -161,8 +194,6 @@ class Display : public EventListener, public IDataHandler
 
                 if (visualization->pixels)
                 {
-                    Uint32 c_white = SDL_MapRGB(visualization->format, 255, 255, 255);
-                    Uint32 c_black = SDL_MapRGB(visualization->format, 0, 0, 0);
                     Uint32 c_gray = SDL_MapRGB(visualization->format, 128, 128, 128);
                     short lval, rval;
                     double ldval, rdval;
@@ -191,8 +222,10 @@ class Display : public EventListener, public IDataHandler
                             if ((rdval < 0) || (rdval > 50.0))
                                 continue;
 
-                            VLine((int*)visualization->pixels, index, offset - floor(ldval), offset, visualization->w, c_white);
-                            VLine((int*)visualization->pixels, index, offset, offset + floor(rdval), visualization->w, c_black);
+                            tagColor ggrad(0, 105, 0, 0, 3, 0);
+                            VGLine((int*)visualization->pixels, index, offset - floor(ldval), offset, visualization->w, ggrad, visualization);
+                            tagColor bgrad(0, 0, 105, 0, 0, 3);
+                            VGLine((int*)visualization->pixels, index, offset, offset + floor(rdval), visualization->w, bgrad, visualization);
                             HLine((int*)visualization->pixels, 0, visualization->w, offset, visualization->w, c_gray);
                             index++;
                         }
