@@ -20,6 +20,7 @@ namespace openplayer
     Events * g_events;
     Display * g_display;
     SoundHandler * g_sounds;
+    HWND g_hwnd = 0;
 
     void CreateSubsystems()
     {
@@ -55,6 +56,7 @@ int main ( int argc, char** argv )
         return 1;
     }
     atexit(SDL_Quit);    // make sure SDL cleans up before exit
+
     SDL_WM_SetCaption("OpenPlayer", "OpenPlayer");
     openplayer::CreateSubsystems();
     SDL_Surface * screen = SDL_SetVideoMode(384, 480, 32, SDL_HWSURFACE|SDL_DOUBLEBUF|SDL_NOFRAME);

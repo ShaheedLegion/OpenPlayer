@@ -60,8 +60,7 @@ class ToggleDisplayButton : public DisplayButton
         {
             if ( ( x > box.x ) && ( x < box.x + box.w ) && ( y > box.y ) && ( y < box.y + box.h ) )
             {//Set the button sprite
-                bToggled = !bToggled;
-                CopyClip(bToggled ? CLIP_MOUSEOUT : CLIP_MOUSEOVER);
+                ToggleButton(!bToggled);
                 return (bToggled ? command : -1);
             }
 
@@ -70,6 +69,11 @@ class ToggleDisplayButton : public DisplayButton
         int HandleMouseUp(int x, int y)
         {
             return -1;
+        }
+        void ToggleButton(bool state)
+        {
+            bToggled = state;
+            CopyClip(bToggled ? CLIP_MOUSEOUT : CLIP_MOUSEOVER);
         }
 
 };

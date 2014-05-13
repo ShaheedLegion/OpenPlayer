@@ -14,6 +14,7 @@ static const int CMD_REP1 = 17;
 static const int CMD_REPA = 18;
 static const int CMD_SHUFF0 = 19;
 static const int CMD_SHUFFA = 20;
+static const int CMD_VOL = 21;
 };
 
 #endif // COMMANDIDS_H_INCLUDED

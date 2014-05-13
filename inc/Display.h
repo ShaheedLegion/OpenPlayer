@@ -12,6 +12,7 @@
 #include "EventListener.h"
 #include "DisplayButton.h"
 #include "ToggleDisplayButton.h"
+#include "VolumeButton.h"
 #include "CommandIDs.h"
 #include "DSP.h"
 
@@ -51,6 +52,7 @@ class Display : public EventListener, public IDataHandler
         DisplayButton * mediaButtons;
         int num_media_buttons;
         ToggleDisplayButton * stateButtons;
+        VolumeButton * volume;
         //MultiStateButton repeatButton;
         int num_state_buttons;
 
@@ -79,11 +81,13 @@ class Display : public EventListener, public IDataHandler
             dstrect.x = 0;
             dstrect.y = 0;
 
-            int bw = 64, bh = 64;
+            int bw = 32, bh = 32;
             const char * names[] = {"gui/op_previous.bmp","gui/op_play.bmp","gui/op_pause.bmp","gui/op_stop.bmp","gui/op_next.bmp","gui/op_open.bmp"};
             int commands[] = {CMD_PREV, CMD_PLAY, CMD_PAUSE, CMD_STOP, CMD_NEXT, CMD_OPEN};
             for (int i = 0; i < num_media_buttons; i++)
                 mediaButtons[i].Initialize(names[i], (i * bw), screen->h - bh, bw, bh, commands[i]);
+
+            volume = new VolumeButton("gui/op_vol_bg.bmp", "gui/op_vol_sl.bmp", screen->w / 2, screen->h - bh, screen->w / 2, bh, CMD_VOL);
 
             const char * states[] = {"gui/op_rep_off.bmp", "gui/op_rep_one.bmp", "gui/op_rep_all.bmp"};
             int statecommands[] = {CMD_REP0, CMD_REP1, CMD_REPA};
@@ -111,8 +115,17 @@ class Display : public EventListener, public IDataHandler
                     for (int i = 0; i < num_state_buttons; i++)
                     {
                         command = stateButtons[i].HandleMouseDown(data.x, data.y);
-                        if (command != -1) return command;
+                        if (command != -1)
+                        {
+                            //process the logic for only allowing one state at a time.
+                            for (int j = 0; j < num_state_buttons; j++)
+                                stateButtons[j].ToggleButton(false);
+                            stateButtons[i].ToggleButton(true);
+                            return command;
+                        }
                     }
+                    command = volume->HandleMouseDown(data.x, data.y);
+                    if (command != -1) return command;
                 }
             }
             if (data.ID == SDL_MOUSEBUTTONUP)
@@ -138,6 +151,7 @@ class Display : public EventListener, public IDataHandler
                     mediaButtons[i].Render(screen);
                 for (int i = 0; i < num_state_buttons; i++)
                     stateButtons[i].Render(screen);
+                volume->Render(screen);
             }
 
             SDL_Flip(screen); // finally, update the screen :)
@@ -222,7 +236,7 @@ class Display : public EventListener, public IDataHandler
                             if ((rdval < 0) || (rdval > 50.0))
                                 continue;
 
-                            tagColor ggrad(0, 105, 0, 0, 3, 0);
+                            tagColor ggrad(0, 255, 0, 0, -3, 0);
                             VGLine((int*)visualization->pixels, index, offset - floor(ldval), offset, visualization->w, ggrad, visualization);
                             tagColor bgrad(0, 0, 105, 0, 0, 3);
                             VGLine((int*)visualization->pixels, index, offset, offset + floor(rdval), visualization->w, bgrad, visualization);
