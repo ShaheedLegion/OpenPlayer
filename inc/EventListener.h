@@ -7,10 +7,11 @@ typedef struct tagEventData
     int keycode;    //key code (keyboard key code or mouse button code)
     int x;  //x coordinate - should be in window coordinates
     int y;  //y coordinate - should be in window coordinates
+    int value;
 
     tagEventData(int id, int kc, int xp, int yp) : ID(id), keycode(kc), x(xp), y(yp)
     {
-
+        value = 0;
     }
 
 } EventData;

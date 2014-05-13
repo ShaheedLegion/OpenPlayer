@@ -19,11 +19,11 @@ public:
     Commands(){}
     ~Commands(){}
 
-    void HandleCommand(int c)
+    void HandleCommand(int c, int value)
     {
         map<int, CommandHandler*>::iterator i = m_handlers.find(c);
         if (i != m_handlers.end())
-            i->second->HandleExecCommand(c);
+            i->second->HandleExecCommand(c, value);
     }
 
     void SetCommandHandler(int c, CommandHandler * h)

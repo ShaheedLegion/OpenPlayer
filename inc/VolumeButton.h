@@ -89,6 +89,11 @@ class VolumeButton
             SDL_BlitSurface( buttonSlider, 0, screen, &offset );
         }
 
+        virtual int GetValue()
+        {
+            return (int)((double)(slider.x - box.x) / box.w);
+        }
+
     protected:
 
         void SetSliderPosition(int offsetx)

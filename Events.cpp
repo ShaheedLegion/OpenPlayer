@@ -34,6 +34,6 @@ void Events::PublishEventData(EventData & data)
     {
 		int command = (*i)->HandleEvent(data);
 		if (m_commands)
-            m_commands->HandleCommand(command);
+            m_commands->HandleCommand(command, data.value);
 	}
 }

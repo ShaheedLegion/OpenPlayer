@@ -4,7 +4,7 @@
 class CommandHandler
 {
     public:
-    virtual void HandleExecCommand(int command) = 0;
+    virtual void HandleExecCommand(int command, int value) = 0;
 };
 
 #endif // COMMANDHANDLER_H_INCLUDED

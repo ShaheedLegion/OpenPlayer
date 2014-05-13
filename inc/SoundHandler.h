@@ -71,7 +71,7 @@ public:
             cout << "Completed song: " << sounds::g_shandler->m_filename << endl;
         }
     }
-    void HandleExecCommand(int command)
+    void HandleExecCommand(int command, int value)
     {
         switch (command)
         {
@@ -101,6 +101,11 @@ public:
             break;
             case CMD_SHUFFA:
             break;
+            case CMD_VOL:
+                {
+                    int volume = (int)((double)(value / 100) * MIX_MAX_VOLUME);
+                    Mix_Volume(-1, volume);
+                }
             default:
             break;
         }
