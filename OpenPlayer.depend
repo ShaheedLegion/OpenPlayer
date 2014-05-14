@@ -130,7 +130,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1399640186 source:d:\codeblocks\projects\openplayer\events.cpp
+1400005947 source:d:\codeblocks\projects\openplayer\events.cpp
 	"inc/Events.h"
 
 1399571721 d:\codeblocks\projects\openplayer\events.h
@@ -166,7 +166,7 @@
 
 1400005947 d:\codeblocks\projects\openplayer\inc\eventlistener.h
 
-1400005947 d:\codeblocks\projects\openplayer\inc\display.h
+1400057880 d:\codeblocks\projects\openplayer\inc\display.h
 	<SDL/SDL.h>
 	<SDL/SDL.h>
 	<limits.h>
@@ -197,7 +197,7 @@
 
 1400005947 d:\codeblocks\projects\openplayer\inc\commandhandler.h
 
-1400005947 d:\codeblocks\projects\openplayer\inc\soundhandler.h
+1400057546 d:\codeblocks\projects\openplayer\inc\soundhandler.h
 	"CommandHandler.h"
 	"CommandIDs.h"
 	"Commands.h"
@@ -435,7 +435,7 @@
 1399891527 d:\codeblocks\sdl-1.2.9\include\sdl\sdl_draw.h
 	<SDL/SDL.h>
 
-1400005947 d:\codeblocks\projects\openplayer\inc\volumebutton.h
+1400057881 d:\codeblocks\projects\openplayer\inc\volumebutton.h
 	<SDL/SDL.h>
 	<SDL/SDL.h>
 

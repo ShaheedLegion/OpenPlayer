@@ -126,6 +126,7 @@ class Display : public EventListener, public IDataHandler
                     }
                     command = volume->HandleMouseDown(data.x, data.y);
                     data.value = volume->GetValue();
+                    //printf("Got volume command value comnand[%d] value[%d]\n", command, data.value);
                     if (command != -1) return command;
                 }
             }

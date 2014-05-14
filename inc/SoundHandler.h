@@ -44,6 +44,7 @@ public:
         c->SetCommandHandler(CMD_REPA, this);
         c->SetCommandHandler(CMD_SHUFF0, this);
         c->SetCommandHandler(CMD_SHUFFA, this);
+        c->SetCommandHandler(CMD_VOL, this);
 
         Mix_OpenAudio(22050,AUDIO_S16SYS,2,640);
         sounds::g_shandler = this;
@@ -68,11 +69,12 @@ public:
             Mix_HaltMusic();
             Mix_FreeMusic(sounds::g_shandler->m_file);
             sounds::g_shandler->m_file = 0;
-            cout << "Completed song: " << sounds::g_shandler->m_filename << endl;
+            printf("Completed song: %s\n", sounds::g_shandler->m_filename.c_str());
         }
     }
     void HandleExecCommand(int command, int value)
     {
+        printf("Handling command code[%d] value[%d]\n", command, value);
         switch (command)
         {
             case CMD_PLAY:
@@ -103,8 +105,10 @@ public:
             break;
             case CMD_VOL:
                 {
-                    int volume = (int)((double)(value / 100) * MIX_MAX_VOLUME);
+                    int volume = (int)((double)((double)value / 100.0) * MIX_MAX_VOLUME);
                     Mix_Volume(-1, volume);
+                    Mix_VolumeMusic(volume);
+                    printf("Setting volume: %d\n", volume);
                 }
             default:
             break;

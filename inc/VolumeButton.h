@@ -91,7 +91,12 @@ class VolumeButton
 
         virtual int GetValue()
         {
-            return (int)((double)(slider.x - box.x) / box.w);
+            double vv = (double)(slider.x - box.x);
+            double vw = vv / (double)box.w;
+            double vx = vw * 100.0;
+            int vol = (int)vx;
+            //printf("Command[%d] Volume Value vv[%f] vw[%f] vx[%f] vol[%d]\n", command, vv, vw, vx, vol);
+            return vol;
         }
 
     protected:
