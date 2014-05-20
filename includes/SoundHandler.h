@@ -3,7 +3,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#include ".\bass\bass.h"
+#include ".\..\bass\bass.h"
 
 
 #define WIN32_LEAN_AND_MEAN
