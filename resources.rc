@@ -1,4 +1,4 @@
-#include "includes\resource.h"
+#include "resource.h"
 
 IDR_MYMENU MENU
 BEGIN

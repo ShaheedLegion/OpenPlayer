@@ -3,8 +3,8 @@
 #define WINVER 0x0501
 
 #include <windows.h>
-#include "includes\Application.h"
-#include "includes\resource.h"
+#include "Application.h"
+#include "resource.h"
 
 int w_w = 420;
 int w_h = 340;
