@@ -1,0 +1,109 @@
+# depslib dependency file v1.0
+1400585485 source:c:\projects\github\fmodcpp\main.cpp
+	<windows.h>
+	"Application.h"
+	"resource.h"
+
+1400138356 c:\projects\github\fmodcpp\minifmod\interface.h
+	".\minifmod.h"
+
+1400138356 c:\projects\github\fmodcpp\minifmod\minifmod.h
+	"music.h"
+
+1400138356 c:\projects\github\fmodcpp\minifmod\music.h
+	"sound.h"
+
+1400138356 c:\projects\github\fmodcpp\minifmod\sound.h
+	<windows.h>
+	<mmsystem.h>
+	"system_memory.h"
+
+1400594682 c:\projects\github\fmodcpp\soundhandler.h
+	<stdlib.h>
+	<stdio.h>
+	".\bass\bass.h"
+	<Windows.h>
+	<math.h>
+	"DSP.h"
+	"avi_utils.h"
+
+1400588172 c:\projects\github\fmodcpp\application.h
+	<Windows.h>
+	<Mmsystem.h>
+	<Commdlg.h>
+	<Commctrl.h>
+	"SoundHandler.h"
+	"resource.h"
+
+1400146340 c:\projects\github\fmodcpp\bass\bass.h
+	<wtypes.h>
+	<stdint.h>
+
+1400508684 c:\projects\github\fmodcpp\dsp.h
+	"Effects.h"
+
+1400504242 c:\projects\github\fmodcpp\resource.h
+
+1400502859 source:c:\projects\github\fmodcpp\resources.rc
+	"resource.h"
+
+1400592470 c:\projects\github\fmodcpp\effects.h
+
+1400588196 c:\projects\github\fmodcpp\avi_utils.h
+	<Windows.h>
+	<vfw.h>
+
+1400588283 source:c:\projects\github\fmodcpp\avi_utils.cpp
+	<windows.h>
+	<vfw.h>
+	"avi_utils.h"
+	<pshpack1.h>
+	<poppack.h>
+
+1400585485 source:c:\projects\github\openplayer\main.cpp
+	<windows.h>
+	"Application.h"
+	"resource.h"
+
+1400588172 c:\projects\github\openplayer\application.h
+	<Windows.h>
+	<Mmsystem.h>
+	<Commdlg.h>
+	<Commctrl.h>
+	"SoundHandler.h"
+	"resource.h"
+
+1400594682 c:\projects\github\openplayer\soundhandler.h
+	<stdlib.h>
+	<stdio.h>
+	".\bass\bass.h"
+	<Windows.h>
+	<math.h>
+	"DSP.h"
+	"avi_utils.h"
+
+1400146340 c:\projects\github\openplayer\bass\bass.h
+	<wtypes.h>
+	<stdint.h>
+
+1400508684 c:\projects\github\openplayer\dsp.h
+	"Effects.h"
+
+1400592470 c:\projects\github\openplayer\effects.h
+
+1400588196 c:\projects\github\openplayer\avi_utils.h
+	<Windows.h>
+	<vfw.h>
+
+1400504242 c:\projects\github\openplayer\resource.h
+
+1400502859 source:c:\projects\github\openplayer\resources.rc
+	"resource.h"
+
+1400588283 source:c:\projects\github\openplayer\avi_utils.cpp
+	<windows.h>
+	<vfw.h>
+	"avi_utils.h"
+	<pshpack1.h>
+	<poppack.h>
+

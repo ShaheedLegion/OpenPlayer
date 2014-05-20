@@ -1,0 +1,25 @@
+#include "resource.h"
+
+IDR_MYMENU MENU
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&Open", ID_FILE_OPEN
+        MENUITEM "E&xit", ID_FILE_EXIT
+    END
+
+    POPUP "&Playback"
+    BEGIN
+        MENUITEM "&Play/Pause", ID_STUFF_PP
+        MENUITEM "&Stop", ID_STUFF_STOP
+    END
+
+    POPUP "&Visualizations"
+    BEGIN
+        MENUITEM "&Milky", ID_VIS_M
+        MENUITEM "&Universe", ID_VIS_U
+        MENUITEM "&Stargate", ID_VIS_S
+    END
+END
+
+MANIFEST RT_MANIFEST "FModCpp_d.exe.manifest"

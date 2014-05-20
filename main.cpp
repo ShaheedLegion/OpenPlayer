@@ -1,126 +1,80 @@
-#ifdef __cplusplus
-    #include <cstdlib>
-#else
-    #include <stdlib.h>
-#endif
-#ifdef __APPLE__
-#include <SDL/SDL.h>
-#else
-#include <SDL/SDL.h>
-#endif
+#define WIN32_LEAN_AND_MEAN
+#define _WIN32_WINNT 0x0501
+#define WINVER 0x0501
 
-#include "inc/Events.h"
-#include "inc/Display.h"
-#include "inc/Commands.h"
-#include "inc/SoundHandler.h"
+#include <windows.h>
+#include "Application.h"
+#include "resource.h"
 
-namespace openplayer
+int w_w = 420;
+int w_h = 340;
+LRESULT CALLBACK WindowProcedure (HWND, UINT, WPARAM, LPARAM);/*  Declare Windows procedure  */
+
+int WINAPI WinMain (HINSTANCE hThisInstance,  HINSTANCE hPrevInstance, LPSTR lpszArgument, int nCmdShow)
 {
-    Commands * g_commands;
-    Events * g_events;
-    Display * g_display;
-    SoundHandler * g_sounds;
-    HWND g_hwnd = 0;
+    char szClassName[ ] = "FModCPPApp";
+    HWND hwnd;               /* This is the handle for our window */
+    MSG messages;            /* Here messages to the application are saved */
+    WNDCLASSEX wincl;        /* Data structure for the windowclass */
 
-    void CreateSubsystems()
+    wincl.hInstance = hThisInstance;
+    wincl.lpszClassName = szClassName;
+    wincl.lpfnWndProc = WindowProcedure;      /* This function is called by windows */
+    wincl.style = CS_DBLCLKS;                 /* Catch double-clicks */
+    wincl.cbSize = sizeof (WNDCLASSEX);
+
+    wincl.hIcon = LoadIcon (NULL, IDI_APPLICATION);    /* Use default icon and mouse-pointer */
+    wincl.hIconSm = LoadIcon (NULL, IDI_APPLICATION);
+    wincl.hCursor = LoadCursor (NULL, IDC_ARROW);
+    wincl.lpszMenuName = MAKEINTRESOURCE(IDR_MYMENU);                 /* No menu */
+    wincl.cbClsExtra = 0;                      /* No extra bytes after the window class */
+    wincl.cbWndExtra = 0;                      /* structure or the window instance */
+    wincl.hbrBackground = (HBRUSH)GetStockObject(BLACK_BRUSH);
+
+    if (!RegisterClassEx (&wincl))
+        return 0;
+
+    hwnd = CreateWindowEx (0, szClassName, "FModApp",
+           WS_EX_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT,
+           w_w, w_h, HWND_DESKTOP, NULL, hThisInstance, NULL );
+
+    ShowWindow (hwnd, nCmdShow);
+    fmapp::Initialize(hwnd, w_w, w_h);
+    fmapp::CreateControls(hwnd);
+
+/*
+    SetWindowLong(hwnd, GWL_EXSTYLE, GetWindowLong(hwnd, GWL_EXSTYLE) |WS_EX_LAYERED);
+    SetLayeredWindowAttributes(hwnd, RGB(0,0,0), (255 * 70)/100, LWA_ALPHA);    //set transparency for this window.
+*/
+
+    while (GetMessage (&messages, NULL, 0, 0))
     {
-        //Declare all classes etc. here.
-        g_commands = new Commands();
-        g_sounds = new SoundHandler(g_commands);
-        g_events = new Events();
-        g_display = new Display();
-
-        g_events->SetCommandHandler(g_commands);
-        g_events->AddEventListener(g_display);
-        g_sounds->SetHandler(g_display);
+        TranslateMessage(&messages);
+        DispatchMessage(&messages);
     }
 
-    void DestroySubsystems()
-    {
-        delete g_events;
-        delete g_display;
-        delete g_commands;
-    }
+    fmapp::Destroy();
+    return messages.wParam;
 }
 
-int main ( int argc, char** argv )
+LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
-    if ( SDL_Init(SDL_INIT_VIDEO) < 0 )    // initialize SDL video
+    switch (message)                  /* handle the messages */
     {
-        printf( "Unable to init SDL Video: %s\n", SDL_GetError() );
-        return 1;
+        case WM_CREATE:
+            break;
+        case WM_COMMAND:
+            fmapp::HandleCommand(hwnd, wParam, lParam);
+            break;
+        case WM_NOTIFY:
+            fmapp::HandleNotify(hwnd, wParam, lParam);
+            break;
+        case WM_DESTROY:
+            PostQuitMessage (0);       /* send a WM_QUIT to the message queue */
+            break;
+        default:                      /* for messages that we don't deal with */
+            return DefWindowProc (hwnd, message, wParam, lParam);
     }
-    if( SDL_Init(SDL_INIT_AUDIO) < 0 )    // initialize SDL audio
-    {
-        printf( "Unable to init SDL Audio: %s\n", SDL_GetError() );
-        return 1;
-    }
-    atexit(SDL_Quit);    // make sure SDL cleans up before exit
-
-    SDL_WM_SetCaption("OpenPlayer", "OpenPlayer");
-    openplayer::CreateSubsystems();
-    SDL_Surface * screen = SDL_SetVideoMode(384, 480, 32, SDL_HWSURFACE|SDL_DOUBLEBUF|SDL_NOFRAME);
-    if ( !screen )
-    {
-        printf("Unable to set 384x480 video: %s\n", SDL_GetError());
-        return 1;
-    }
-
-    openplayer::g_display->Initialize(screen);
-
-    bool done = false;
-    while (!done)    // program main loop
-    {// message processing loop
-        SDL_Event event;
-        while (SDL_PollEvent(&event))
-        {// check for messages
-            switch (event.type)
-            {// exit if the window is closed
-            case SDL_QUIT:
-                done = true;
-                break;
-
-            case SDL_KEYDOWN:// check for keypresses
-                {// exit if ESCAPE is pressed
-                    if (event.key.keysym.sym == SDLK_ESCAPE)
-                        done = true;
-                    else
-                    {
-                        EventData data(SDL_KEYDOWN, event.key.keysym.sym, 0, 0);
-                        openplayer::g_events->PublishEventData(data);
-                    }
-
-                    break;
-                }
-            case SDL_MOUSEMOTION:
-                {
-                    EventData data(SDL_MOUSEMOTION, event.button.button, event.motion.x, event.motion.y);
-                    openplayer::g_events->PublishEventData(data);
-                    break;
-                }
-            case SDL_MOUSEBUTTONDOWN :
-                {
-                    //printf("Mouse down x:%d y:%d\n", event.motion.x, event.motion.y);
-                    EventData data(SDL_MOUSEBUTTONDOWN, event.button.button, event.button.x, event.button.y);
-                    openplayer::g_events->PublishEventData(data);
-                    break;
-                }
-                case SDL_MOUSEBUTTONUP :
-                {
-                    //printf("Mouse up x:%d y:%d\n", event.motion.x, event.motion.y);
-                    EventData data(SDL_MOUSEBUTTONUP, event.button.button, event.button.x, event.button.y);
-                    openplayer::g_events->PublishEventData(data);
-                    break;
-                }
-            } // end switch
-        } // end of message processing
-       openplayer::g_display->Render();
-       SDL_Delay(50);   //put the delay here to free up some cpu
-    } // end main loop
-
-    openplayer::DestroySubsystems();
-    SDL_Quit();
-    printf("Exited cleanly\n");    // all is well ;)
-
     return 0;
 }
+
