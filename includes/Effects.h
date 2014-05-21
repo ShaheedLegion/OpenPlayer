@@ -760,6 +760,7 @@ class FlameEffect : public Effect
     {
         Effect::Process(spec, data, color);
         memadd(m_buffer, data, (w * h));
+        fireFilter(m_buffer);
 
         float specAvg = 1;
         for (int i = 0; i < 20; i+=2)
@@ -888,7 +889,6 @@ class FlameEffect : public Effect
                 break;  //should never get here ...
             }
         }
-        fireFilter(m_buffer);
         memcpy(data, m_buffer, (w * h) * sizeof(int));
     }
 
