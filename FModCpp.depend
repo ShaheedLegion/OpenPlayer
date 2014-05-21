@@ -60,10 +60,10 @@
 	<pshpack1.h>
 	<poppack.h>
 
-1400585485 source:c:\projects\github\openplayer\main.cpp
+1400660750 source:c:\projects\github\openplayer\main.cpp
 	<windows.h>
-	"Application.h"
-	"resource.h"
+	"includes\Application.h"
+	"includes\resource.h"
 
 1400588172 c:\projects\github\openplayer\application.h
 	<Windows.h>
@@ -97,13 +97,41 @@
 
 1400504242 c:\projects\github\openplayer\resource.h
 
-1400502859 source:c:\projects\github\openplayer\resources.rc
-	"resource.h"
+1400678048 source:c:\projects\github\openplayer\resources.rc
+	"includes\resource.h"
 
-1400588283 source:c:\projects\github\openplayer\avi_utils.cpp
+1400660800 source:c:\projects\github\openplayer\avi_utils.cpp
 	<windows.h>
 	<vfw.h>
-	"avi_utils.h"
+	"includes\avi_utils.h"
 	<pshpack1.h>
 	<poppack.h>
+
+1400678112 c:\projects\github\openplayer\includes\application.h
+	<Windows.h>
+	<Mmsystem.h>
+	<Commdlg.h>
+	<Commctrl.h>
+	"SoundHandler.h"
+	"resource.h"
+
+1400595373 c:\projects\github\openplayer\includes\soundhandler.h
+	<stdlib.h>
+	<stdio.h>
+	".\..\bass\bass.h"
+	<Windows.h>
+	<math.h>
+	"DSP.h"
+	"avi_utils.h"
+
+1400678773 c:\projects\github\openplayer\includes\dsp.h
+	"Effects.h"
+
+1400682476 c:\projects\github\openplayer\includes\effects.h
+
+1400588196 c:\projects\github\openplayer\includes\avi_utils.h
+	<Windows.h>
+	<vfw.h>
+
+1400678048 c:\projects\github\openplayer\includes\resource.h
 

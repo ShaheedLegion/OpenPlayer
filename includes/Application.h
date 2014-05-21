@@ -50,7 +50,7 @@ namespace fmapp
         ofn.lpstrFileTitle[0] = '\0';
         ofn.nMaxFile = sizeof( file_name );
         ofn.nMaxFileTitle = sizeof(file_title);
-        ofn.lpstrFilter = "MP3\0*.mp3\0Ogg\0*.ogg\0S3M\0*.s3m\0Midi\0*.midi\0";
+        ofn.lpstrFilter = "MP3\0*.mp3\0Ogg\0*.ogg\0WMA\0*.wma\0Midi\0*.midi\0";
         ofn.nFilterIndex = 1;
         ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST ;
         return GetOpenFileName(&ofn);
@@ -108,6 +108,13 @@ namespace fmapp
                 break;
             case ID_VIS_S:
                 HandleVisChange(2);
+                break;
+            case ID_VIS_F:
+                HandleVisChange(3);
+                break;
+            case ID_VIS_FF:
+                HandleVisChange(4);
+                break;
             default:
                 break;
         }

@@ -3,7 +3,7 @@
 #include <windows.h>
 #include <vfw.h>
 
-#include "avi_utils.h"
+#include "includes\avi_utils.h"
 
 
 // First, we'll define the WAV file format.

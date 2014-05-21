@@ -12,7 +12,9 @@
 #define ID_VIS_M 9111
 #define ID_VIS_U 9112
 #define ID_VIS_S 9113
+#define ID_VIS_F 9004
+#define ID_VIS_FF 9005
 
-#define g_menu_num 3
-int g_menu_items[] = {ID_VIS_M, ID_VIS_U, ID_VIS_S};
+#define g_menu_num 5
+int g_menu_items[] = {ID_VIS_M, ID_VIS_U, ID_VIS_S, ID_VIS_F, ID_VIS_FF};
 #endif // RESOURCE_H_INCLUDED
