@@ -39,7 +39,8 @@ class SoundHandler
 #if (AVI_REC)
         m_avi = NULL;
 #endif
-        dsp = new DSP(_bmw, _bmh);
+        std::vector<std::string> names;
+        dsp = new DSP(_bmw, _bmh, names);
         BASS_Init(-1,44100,0,parent,NULL);
         m_main = parent;
 
@@ -110,9 +111,9 @@ class SoundHandler
         }
     }
 
-    void SetVis(int idx)
+    void SetVis(std::string & name)
     {
-        dsp->SetVisIdx(idx);
+        dsp->SetVisIdx(name);
     }
 
     void OpenFile(const char * ft)

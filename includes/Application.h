@@ -168,7 +168,8 @@ namespace fmapp
             CheckMenuItem(g_menu, g_menu_items[i], MF_BYCOMMAND | MF_UNCHECKED);
         }
         CheckMenuItem(g_menu, g_menu_items[vis], MF_BYCOMMAND | MF_CHECKED);
-        g_sound->SetVis(vis);
+        std::string name("Milky");
+        g_sound->SetVis(name);
 
     }
     void Initialize(HWND hwnd, int w, int h)

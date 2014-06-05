@@ -8,21 +8,20 @@
 		<Build>
 			<Target title="Debug">
 				<Option output="FModCpp_d" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj\Debug\" />
+				<Option object_output="obj/Debug/" />
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
 				</Compiler>
 				<Linker>
-					<Add library="minifmod\minifmod.lib" />
 					<Add library="libwinmm.a" />
 					<Add library="..\..\..\Program Files (x86)\CodeBlocks\MinGW\lib\libvfw32.a" />
 				</Linker>
 			</Target>
 			<Target title="Release">
 				<Option output="FModCpp_r" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj\Release\" />
+				<Option object_output="obj/Release/" />
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Compiler>
@@ -42,20 +41,21 @@
 			<Add library="kernel32" />
 			<Add library="bass\bass.lib" />
 		</Linker>
-		<Unit filename="Application.h" />
-		<Unit filename="DSP.h" />
-		<Unit filename="Effects.h" />
-		<Unit filename="SoundHandler.h" />
+		<Unit filename="Effects/Effects.h" />
 		<Unit filename="avi_utils.cpp" />
-		<Unit filename="avi_utils.h" />
+		<Unit filename="includes/Application.h" />
+		<Unit filename="includes/DSP.h" />
+		<Unit filename="includes/SoundHandler.h" />
+		<Unit filename="includes/avi_utils.h" />
+		<Unit filename="includes/resource.h" />
 		<Unit filename="main.cpp" />
-		<Unit filename="resource.h" />
 		<Unit filename="resources.rc">
 			<Option compilerVar="WINDRES" />
 		</Unit>
 		<Extensions>
 			<code_completion />
 			<debugger />
+			<envvars />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>
