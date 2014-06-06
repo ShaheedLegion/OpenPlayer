@@ -16,11 +16,7 @@ BEGIN
 
     POPUP "&Visualizations"
     BEGIN
-        MENUITEM "&Milky", ID_VIS_M
-        MENUITEM "&Universe", ID_VIS_U
-        MENUITEM "&Stargate", ID_VIS_S
-        MENUITEM "&Fractal", ID_VIS_F
-        MENUITEM "&Flames", ID_VIS_FF
+        MENUITEM "None", 0
     END
 END
 

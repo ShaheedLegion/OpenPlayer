@@ -34,12 +34,11 @@ class SoundHandler
 #endif
 
     public:
-    SoundHandler(HWND parent, int w, int h) : _bmw(w), _bmh(200)
+    SoundHandler(HWND parent, int w, int h, std::vector<std::string> & names) : _bmw(w), _bmh(200)
     {
 #if (AVI_REC)
         m_avi = NULL;
 #endif
-        std::vector<std::string> names;
         dsp = new DSP(_bmw, _bmh, names);
         BASS_Init(-1,44100,0,parent,NULL);
         m_main = parent;

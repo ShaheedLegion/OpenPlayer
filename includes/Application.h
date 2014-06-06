@@ -100,22 +100,9 @@ namespace fmapp
             case ID_STUFF_STOP:
                 g_sound->StopSong();
             break;
-            case ID_VIS_M:
-                HandleVisChange(0);
-            break;
-            case ID_VIS_U:
-                HandleVisChange(1);
-                break;
-            case ID_VIS_S:
-                HandleVisChange(2);
-                break;
-            case ID_VIS_F:
-                HandleVisChange(3);
-                break;
-            case ID_VIS_FF:
-                HandleVisChange(4);
-                break;
+
             default:
+                HandleVisChange(identifier);
                 break;
         }
     }
@@ -163,20 +150,63 @@ namespace fmapp
 
     void HandleVisChange(int vis)
     {
-        for (int i = 0; i < g_menu_num; ++i)
-        {
-            CheckMenuItem(g_menu, g_menu_items[i], MF_BYCOMMAND | MF_UNCHECKED);
-        }
-        CheckMenuItem(g_menu, g_menu_items[vis], MF_BYCOMMAND | MF_CHECKED);
-        std::string name("Milky");
-        g_sound->SetVis(name);
+        HMENU visMenu = GetSubMenu(g_menu, 2);
+        if (visMenu == NULL)
+            return;
 
+        int nItems = GetMenuItemCount(visMenu);
+        if (nItems == -1)   //should not happen, but just in case
+            return;
+
+        int itemId;
+        for (int i = 0; i < nItems; ++i)
+        {
+            itemId = GetMenuItemID(visMenu, i);
+            if (itemId != -1)
+                CheckMenuItem(visMenu, itemId, MF_BYCOMMAND | MF_UNCHECKED);
+        }
+
+        CheckMenuItem(visMenu, vis, MF_BYCOMMAND | MF_CHECKED);
+
+        MENUITEMINFO itemInfo;
+        ZeroMemory(&itemInfo, sizeof(MENUITEMINFO));
+        itemInfo.cbSize = sizeof(MENUITEMINFO);
+        itemInfo.fMask = MIIM_STRING;
+        itemInfo.fType = MFT_STRING;
+
+        TCHAR buffer[MAX_PATH];
+        itemInfo.cch = MAX_PATH;
+        itemInfo.dwTypeData = buffer;
+
+        if (GetMenuItemInfo(visMenu, vis, FALSE, &itemInfo))
+        {
+            std::string name(itemInfo.dwTypeData, itemInfo.cch);
+            g_sound->SetVis(name);
+        }
     }
     void Initialize(HWND hwnd, int w, int h)
     {
         wind_w = w;
         wind_h = h;
-        g_sound = new SoundHandler(hwnd, wind_w, wind_h);
+        std::vector<std::string> names;
+        g_sound = new SoundHandler(hwnd, wind_w, wind_h, names);
+
+        HMENU hMenu = GetMenu(hwnd);    //get the menu bar handle
+        if (hMenu == NULL)
+        {
+            MessageBox(hwnd, "Error!", "Could not get the menu handle.", MB_OK);
+            return;
+        }
+
+        HMENU visMenu = GetSubMenu(hMenu, 2);
+        if (visMenu == NULL)
+        {
+            MessageBox(hwnd, "Error!", "Could not get the SubMenu handle.", MB_OK);
+            return;
+        }
+
+        for (unsigned int i = 0; i < names.size(); ++i)
+            AppendMenu(visMenu, MF_STRING, (WM_USER + i), names[i].c_str());
     }
     void Destroy(){ delete fmapp::g_sound; }
 };

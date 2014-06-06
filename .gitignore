@@ -212,3 +212,9 @@ pip-log.txt
 .mr.developer.cfg
 stdout.txt
 stderr.txt
+
+*.depend
+*.layout
+*.gch
+*.a
+*.def

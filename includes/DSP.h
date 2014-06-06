@@ -70,6 +70,7 @@ public:
 
     void SetVisIdx(std::string & name)
     {
+        g_fill_idx = -1;
         for (unsigned int i = 0; i < g_effects.size(); ++i)
         {
             if (g_effects[i].second.compare(name) == 0)

@@ -60,7 +60,7 @@
 	<pshpack1.h>
 	<poppack.h>
 
-1400660750 source:c:\projects\github\openplayer\main.cpp
+1401979888 source:c:\projects\github\openplayer\main.cpp
 	<windows.h>
 	"includes\Application.h"
 	"includes\resource.h"
@@ -82,7 +82,7 @@
 	"DSP.h"
 	"avi_utils.h"
 
-1400146340 c:\projects\github\openplayer\bass\bass.h
+1401979888 c:\projects\github\openplayer\bass\bass.h
 	<wtypes.h>
 	<stdint.h>
 
@@ -97,17 +97,17 @@
 
 1400504242 c:\projects\github\openplayer\resource.h
 
-1400678048 source:c:\projects\github\openplayer\resources.rc
+1402079997 source:c:\projects\github\openplayer\resources.rc
 	"includes\resource.h"
 
-1400660800 source:c:\projects\github\openplayer\avi_utils.cpp
+1401979888 source:c:\projects\github\openplayer\avi_utils.cpp
 	<windows.h>
 	<vfw.h>
 	"includes\avi_utils.h"
 	<pshpack1.h>
 	<poppack.h>
 
-1400678112 c:\projects\github\openplayer\includes\application.h
+1402080344 c:\projects\github\openplayer\includes\application.h
 	<Windows.h>
 	<Mmsystem.h>
 	<Commdlg.h>
@@ -115,7 +115,7 @@
 	"SoundHandler.h"
 	"resource.h"
 
-1400595373 c:\projects\github\openplayer\includes\soundhandler.h
+1402077720 c:\projects\github\openplayer\includes\soundhandler.h
 	<stdlib.h>
 	<stdio.h>
 	".\..\bass\bass.h"
@@ -124,14 +124,22 @@
 	"DSP.h"
 	"avi_utils.h"
 
-1400678773 c:\projects\github\openplayer\includes\dsp.h
-	"Effects.h"
+1402080057 c:\projects\github\openplayer\includes\dsp.h
+	<windows.h>
+	<vector>
+	"../Effects/Effects.h"
 
 1400682871 c:\projects\github\openplayer\includes\effects.h
 
-1400588196 c:\projects\github\openplayer\includes\avi_utils.h
+1401979888 c:\projects\github\openplayer\includes\avi_utils.h
 	<Windows.h>
 	<vfw.h>
 
-1400678048 c:\projects\github\openplayer\includes\resource.h
+1402078526 c:\projects\github\openplayer\includes\resource.h
+
+1401992382 c:\projects\github\openplayer\effects\effects.h
+	<string>
+	<memory>
+	<cstring>
+	<math.h>
 
